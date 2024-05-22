@@ -50,12 +50,12 @@ resource "kubernetes_env" "example" {
 
   env {
     name  = "MONGODB_URI"
-    value = "mongodb://${data.terraform_remote_state.mongodb.outputs.ec2_instance_dns_name}:27017"
+    value = "mongodb://${data.terraform_remote_state.mongodb.outputs.mongodb_username}:${data.terraform_remote_state.mongodb.outputs.mongodb_password}@${data.terraform_remote_state.mongodb.outputs.ec2_instance_dns_name}:27017"
   }
 
   env {
     name  = "SECRET_KEY"
-    value = "90"
+    value = "secret123"
   }
 }
 
